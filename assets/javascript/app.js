@@ -1,37 +1,64 @@
 $(document).ready(function () {
     //Global variable
-    var timer = 30;
     var correctAnswer = 0;
     var incorrectAnswer = 0;
     var unanswer = 0;
-    var clock;
     var game;
     var score = 0;
 
     var questions = [{
-            question: "who is my tutor",
-            answers: ["nick", "somebody", "ryan", "bob"],
-            right: "nick"
+            question: "1 What is the proper term for a group of kittens?",
+            answers: ["Kettle", "Kaboodle", "Kine", "Kindle"],
+            right: "Kindle",
+            name: 1
         },
         {
-            question: "who is my teacher",
-            answers: ["nick", "tom", "ryan", "bob"],
-            right: "tom"
+            question: "2 All cats are norn with what color eyes",
+            answers: ["Blue", "Pink", "Green", "Black"],
+            right: "Blue",
+            name: 2
+        },
+        {
+            question: "3 What percentage of a cat's bones are in its tail?",
+            answers: ["10%", "20%", "2%", "0%"],
+            right: "10%",
+            name: 3
+        },
+        {
+            question: "4 What is it called when a cat kneads the ground?",
+            answers: ["Sneegling", "Snurgling", "Rubbing", "Kneading"],
+            right: "Snurgling",
+            name: 4
+
+        },
+        {
+            question: "5 How many different sounds can a cat make?",
+            answers: ["10", "27", "150", "100"],
+            right: "100",
+            name: 5
+        },
+        {
+            question: "6 How many breeds of domestic cat are there worldwide?",
+            answers: ["200", "300", "80", "70"],
+            right: "70",
+            name: 6
+        },
+        {
+            question: "7 If a male cat is both orange and black, he is probably...?",
+            answers: ["Schizophrenic", "Blind", "Deaf", "Sterile"],
+            right: "Sterile",
+            name: 7
         },
     ]
-    $('.start-btn').on('click', function () { //listener for static html
+    $('.start-btn').on('click', function () {
         for (let i = 0; i < questions.length; i++) {
             var newDiv = $('<div>')
             var newquestion = $('<p>')
+            //coundown(30);
             newquestion.text(questions[i].question)
             newDiv.append(newquestion)
-            questions[i].answers.forEach(function (value, index) { //template literals : use backtics and ${}
+            questions[i].answers.forEach(function (value, index) {
                 var newAnswer = $(`<input type="radio" name="question${i}" value="${value}">${value}</input>`)
-                // var newAnswer= $('<input>')
-                // newAnswer.attr("type", "radio")
-                // newAnswer.attr("name", "question"+i)
-                // newAnswer.attr("value", value)
-                // newAnswer.text( value)
                 newDiv.append(newAnswer)
             })
             $('body').append(newDiv)
@@ -40,24 +67,28 @@ $(document).ready(function () {
         $('.start-btn').hide()
     })
 
-    $(document).on('click', "h1", function () { //listener for dynamically generated html
-        console.log('nick')
+    $(document).on('click', "h1", function () {
+        console.log('value')
+        for (let quest = 0; quest < questions.length; quest++) {
+            let answer = $(`input[name=${quest}]:checked`).val();
+            // if answer === questions[i].right {
+            //     correctAnswer++;
+            // } else {
+            //     wrongAnswer++;
+            // };
+
+        }
+
     })
+    //timer
+    //var countdown = function(time) {
+    //     var timer=setInterval(function(){
+    //     time = time - 1;
+    //     $("#time-remain").html(seconds);
+    //  clearInterval(timer);
+    //  ruturn;
+    // }
 
-
-
-
-    //game start
-    //     $('.answers').css('visibility','hidden');
-    //     $('body').on('click', '.start-btn', function(event){
-    //         event.preventDefault();
-    //         startGame();
-    //         $('.answers').css('visibility','visible');
-    //     });
-
-    //     $('body').on('click','.answer', function(event){
-    //         chosenAnswer=$(this).text();
-    //         answerCounter =question[counter].answers;
-    //     })
+    // })
 
 })
