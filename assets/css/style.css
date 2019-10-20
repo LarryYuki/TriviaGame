@@ -1,0 +1,20 @@
+body {
+    background-image: url('https://image.shutterstock.com/image-vector/cute-cat-portrait-cats-paws-260nw-654909460.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    letter-spacing: 2px;
+    text-align: center;
+    color: brown;
+    font-family: fantasy;
+}
+
+header {
+    text-align: center;
+    color: orangered;
+    font-size: 80px;
+}
+
+button {
+    text-align: center;
+    background-color: rgba(174, 192, 15, 0.432);
+}
