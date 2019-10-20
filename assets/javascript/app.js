@@ -54,7 +54,7 @@ $(document).ready(function () {
         for (let i = 0; i < questions.length; i++) {
             var newDiv = $('<div>')
             var newquestion = $('<p>')
-            //coundown(30);
+            countdown(60);
             newquestion.text(questions[i].question)
             newDiv.append(newquestion)
             questions[i].answers.forEach(function (value, index) {
@@ -63,32 +63,42 @@ $(document).ready(function () {
             })
             $('body').append(newDiv)
         }
-        $('body').append($('<h1>GRADE</h1>'))
+        $('body').append($('<button class="grade">GRADE</button>'))
         $('.start-btn').hide()
     })
 
-    $(document).on('click', "h1", function () {
+    $(document).on('click', ".grade", function () {
         console.log('value')
         for (let quest = 0; quest < questions.length; quest++) {
-            let answer = $(`input[name=${quest}]:checked`).val();
-            // if answer === questions[i].right {
-            //     correctAnswer++;
-            // } else {
-            //     wrongAnswer++;
-            // };
+            let answer = $(`input[name=question${quest}]:checked`).attr("value");
+            console.log(answer);
+            console.log(questions[quest].right);
+            if (answer === questions[quest].right) {
+                correctAnswer++;
+            } else {
+                incorrectAnswer++;
+            };
 
         }
+        console.log(correctAnswer);
+        console.log(incorrectAnswer);
 
     })
-    //timer
-    //var countdown = function(time) {
-    //     var timer=setInterval(function(){
-    //     time = time - 1;
-    //     $("#time-remain").html(seconds);
-    //  clearInterval(timer);
-    //  ruturn;
-    // }
 
-    // })
+    var countdown = function (time) {
+        var timer = setInterval(function () {
+            time = time - 1;
+            $("#time-remain").html(time);
+            if (time === 0) {
+                // time--;
+                clearInterval(timer);
+                // alert("Time Up")
+            }
+            // return;
 
-})
+        }, 1000);
+
+
+    }
+
+});
